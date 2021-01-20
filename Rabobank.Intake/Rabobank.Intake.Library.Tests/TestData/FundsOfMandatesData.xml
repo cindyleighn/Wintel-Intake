@@ -40,22 +40,34 @@
 				</Mandate>
 			</Mandates>
 		</FundOfMandates>
-    <FundOfMandates>
-      <InstrumentCode>NL0000440584</InstrumentCode>
-      <InstrumentName>Test Fund of Mandates</InstrumentName>
-      <LiquidityAllocation>1.5</LiquidityAllocation>
-      <Mandates>
-        <Mandate>
-          <MandateId>NL0000440584-01</MandateId>
-          <MandateName>Test Mandate 01</MandateName>
-          <Allocation>39.3</Allocation>
-        </Mandate>
-        <Mandate>
-          <MandateId>NL0000440584-02</MandateId>
-          <MandateName>Test Mandate 01</MandateName>
-          <Allocation>59.2</Allocation>
-        </Mandate>
-      </Mandates>
-    </FundOfMandates>
-  </FundsOfMandates>
+		<FundOfMandates>
+			<InstrumentCode>NL0000440584</InstrumentCode>
+			<InstrumentName>Test Fund of Mandates</InstrumentName>
+			<LiquidityAllocation>1.5</LiquidityAllocation>
+			<Mandates>
+				<Mandate>
+					<MandateId>NL0000440584-01</MandateId>
+					<MandateName>Test Mandate 01</MandateName>
+					<Allocation>39.3</Allocation>
+				</Mandate>
+				<Mandate>
+					<MandateId>NL0000440584-02</MandateId>
+					<MandateName>Test Mandate 01</MandateName>
+					<Allocation>59.2</Allocation>
+				</Mandate>
+			</Mandates>
+		</FundOfMandates>
+		<FundOfMandates>
+			<InstrumentCode>NL0000440555</InstrumentCode>
+			<InstrumentName>Test Fund of Mandates data</InstrumentName>
+			<LiquidityAllocation>0</LiquidityAllocation>
+			<Mandates>
+				<Mandate>
+					<MandateId>NL0000440585-01</MandateId>
+					<MandateName>Mandate 01</MandateName>
+					<Allocation>39.3</Allocation>
+				</Mandate>
+			</Mandates>
+		</FundOfMandates>
+	</FundsOfMandates>
 </FundsOfMandatesData>

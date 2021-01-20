@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestData\Dummy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\FundsOfMandatesData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

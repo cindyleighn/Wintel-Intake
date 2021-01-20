@@ -126,4 +126,7 @@
   <data name="NotXmlFile" xml:space="preserve">
     <value>Provided file to read mandates is not in xml format.</value>
   </data>
+  <data name="RequiredForPortfolio" xml:space="preserve">
+    <value>{0} can not be null, it is required to build portfolio.</value>
+  </data>
 </root>

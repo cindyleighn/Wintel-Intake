@@ -86,5 +86,14 @@ namespace Rabobank.Intake.Library.Resources {
                 return ResourceManager.GetString("NotXmlFile", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} can not be null, it is required to build portfolio..
+        /// </summary>
+        internal static string RequiredForPortfolio {
+            get {
+                return ResourceManager.GetString("RequiredForPortfolio", resourceCulture);
+            }
+        }
     }
 }
