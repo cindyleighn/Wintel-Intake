@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabobank.Intake.App", "Rabobank.Intake.App\Rabobank.Intake.App.csproj", "{B3799B0A-AB09-40C0-8E7A-0A9DE416F639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabobank.Intake.App", "Rabobank.Intake.App\Rabobank.Intake.App.csproj", "{B3799B0A-AB09-40C0-8E7A-0A9DE416F639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabobank.Intake.Library", "Rabobank.Intake.Library\Rabobank.Intake.Library.csproj", "{A25C1BB0-D411-4917-A7E4-51D9DD16AF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabobank.Intake.Library", "Rabobank.Intake.Library\Rabobank.Intake.Library.csproj", "{A25C1BB0-D411-4917-A7E4-51D9DD16AF1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabobank.Intake.Library.Tests", "Rabobank.Intake.Library.Tests\Rabobank.Intake.Library.Tests.csproj", "{A93F7860-58B6-4C95-B9ED-5436465718F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabobank.Intake.Library.Tests", "Rabobank.Intake.Library.Tests\Rabobank.Intake.Library.Tests.csproj", "{A93F7860-58B6-4C95-B9ED-5436465718F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestProjects", "TestProjects", "{E93B0396-E456-4DC9-A05F-1380BF46E31C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{6D3DB09C-37E1-4746-AF34-B7A128A0DD9F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
