@@ -223,6 +223,106 @@ namespace Rabobank.Intake.Library.Tests
         }
 
         [TestMethod]
+        public void TestDataPortfolioLoaded_ValidateMandateAllocationData()
+        {
+            //arrange
+            XDocument xmlData = XDocument.Load(_fileName);
+            var mandatesElement = XName.Get("Mandate", "http://amt.rnss.rabobank.nl/");
+            var allocationElement = XName.Get("Allocation", "http://amt.rnss.rabobank.nl/");
+
+            var dataFromXML = from e in xmlData.Descendants(mandatesElement)
+                              select new
+                              {
+                                  Allocation = decimal.Parse(e.Element(allocationElement).Value)
+                              };
+
+            var portfolio = PortfolioProvider.MatchingPositionCode;
+            var fundOfMandatesData = _mandatesCalculator.GetFundOfMandates(_fileName);
+
+            //act
+            var positions = _mandatesCalculator.CalculateMandates(portfolio, fundOfMandatesData).Positions;
+
+            //assert
+            var mandates = positions.SelectMany(position => position.Mandates);
+            var index = 0;
+            foreach (var mandate in mandates)
+            {
+                if (mandate.Name == "Liquidity")
+                {
+                    continue;
+                }
+                mandate.Allocation.Should().Be(dataFromXML.ElementAt(index).Allocation / 100);
+                index++;
+            }
+        }
+
+        [TestMethod]
+        public void TestDataPortfolioLoaded_ValidateMandateValue()
+        {
+            //arrange
+            XDocument xmlData = XDocument.Load(_fileName);
+            var mandatesElement = XName.Get("Mandate", "http://amt.rnss.rabobank.nl/");
+            var mandateIdElement = XName.Get("MandateId", "http://amt.rnss.rabobank.nl/");
+            var allocationElement = XName.Get("Allocation", "http://amt.rnss.rabobank.nl/");
+
+            var dataFromXML = from e in xmlData.Descendants(mandatesElement)
+                              select new
+                              {
+                                  MandateId = e.Element(mandateIdElement).Value,
+                                  Allocation = decimal.Parse(e.Element(allocationElement).Value)
+                              };
+            var testMandateIds = new string[] { "NL0000287100-01", "NL0000287100-02", "NL0000287100-03" };
+            var testMandates = dataFromXML.Where(data => testMandateIds.Contains(data.MandateId));
+
+            var portfolio = PortfolioProvider.MatchingPositionCode;
+            var fundOfMandatesData = _mandatesCalculator.GetFundOfMandates(_fileName);
+
+            //act
+            var positions = _mandatesCalculator.CalculateMandates(portfolio, fundOfMandatesData).Positions;
+
+            var positionValue = positions.First().Value;
+            var mandates = positions.SelectMany(position => position.Mandates);
+
+            //assert
+            var index = 0;
+            foreach (var mandate in mandates)
+            {
+                if (mandate.Name == "Liquidity")
+                {
+                    continue;
+                }
+
+                var mandateAllocation = testMandates.ElementAt(index).Allocation;
+                decimal expectedValue = Math.Round(decimal.Multiply(positionValue, mandateAllocation) / 100, MidpointRounding.AwayFromZero);
+                mandate.Value.Should().Be(expectedValue);
+                index++;
+            }
+        }
+
+        [TestMethod]
+        public void CalculateMandates_ValidateLiquidityMandateAllocation()
+        {
+            //arrange
+            decimal expectedLiquidityMandateAllocation = (decimal)0.001;
+
+            var portfolio = PortfolioProvider.MatchingPositionCode;
+            var fundOfMandatesData = _mandatesCalculator.GetFundOfMandates(_fileName);
+
+            //act
+            var positions = _mandatesCalculator.CalculateMandates(portfolio, fundOfMandatesData).Positions;
+
+
+            var mandates = positions.SelectMany(position => position.Mandates);
+
+            //assert
+            foreach (var mandate in mandates)
+                if (mandate.Name == "Liquidity")
+                    mandate.Allocation
+                        .Should()
+                        .Be(expectedLiquidityMandateAllocation);
+        }
+
+        [TestMethod]
         public void CalculateMandates_ValidateLiquidityMandateValue()
         {
             //arrange

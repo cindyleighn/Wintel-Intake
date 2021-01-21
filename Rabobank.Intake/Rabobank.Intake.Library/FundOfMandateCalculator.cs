@@ -10,7 +10,7 @@
     using Rabobank.Intake.Library.Resources;
 
     /// <summary>
-    /// Mandate calculator class which 
+    /// Mandate calculator class which helps in calculating mandates
     /// </summary>
     public class FundOfMandateCalculator : IFundOfMandateCalculator
     {
